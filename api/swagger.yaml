@@ -1,0 +1,1030 @@
+---
+swagger: "2.0"
+info:
+  description: This is the API for the SpareFoot Arena hackathon project
+  version: 1.0.0
+  title: SpareFoot Arena
+  contact:
+    email: patrick@sparefoot.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /SpareFootArena/arena/1.0.0
+tags:
+- name: arena
+  description: Workplace Arena
+  externalDocs:
+    description: Find out more
+    url: http://arena.sparefoot.com
+- name: arena
+  description: Access to Arena rankings
+- name: competitor
+  description: Operations about competitors
+- name: game
+  description: Operations about games
+- name: match
+  description: Operations about matches
+- name: ratings
+  description: Operations about ratings
+- name: user
+  description: Operations about user
+  externalDocs:
+    description: Find out more about our store
+    url: http://swagger.io
+schemes:
+- https
+- http
+paths:
+  /competitor:
+    get:
+      tags:
+      - competitor
+      summary: Find competitors
+      operationId: getCompetitors
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: firstName
+        in: query
+        description: First name of competitor to search for
+        required: false
+        type: string
+      - name: lastName
+        in: query
+        description: Last name of competitor to search for
+        required: false
+        type: string
+      - name: emailName
+        in: query
+        description: Email of competitor to search for
+        required: false
+        type: string
+      - name: hipchat
+        in: query
+        description: Hipchat of competitor to search for
+        required: false
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Competitor'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Competitor not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    post:
+      tags:
+      - competitor
+      summary: Add a new competitor
+      operationId: addCompetitor
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Competitor object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Competitor'
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    put:
+      tags:
+      - competitor
+      summary: Update an existing competitor
+      operationId: updateCompetitor
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Competitor object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Competitor'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Competitor not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /competitor/{competitorId}:
+    get:
+      tags:
+      - competitor
+      summary: Find competitor by ID
+      description: Returns a single competitor
+      operationId: getCompetitorById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: competitorId
+        in: path
+        description: ID of competitor to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Competitor'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Competitor not found
+      security:
+      - api_key: []
+    post:
+      tags:
+      - competitor
+      summary: Updates a competitor in the store with form data
+      operationId: updateCompetitorWithForm
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: competitorId
+        in: path
+        description: ID of competitor that needs to be updated
+        required: true
+        type: integer
+        format: int64
+      - name: type
+        in: formData
+        description: Competitor type (player / team)
+        required: true
+        type: string
+      - name: firstName
+        in: formData
+        description: Updated first name of the competitor
+        required: false
+        type: string
+      - name: lastName
+        in: formData
+        description: Updated last name of the competitor
+        required: false
+        type: string
+      - name: email
+        in: formData
+        description: Updated email of the competitor
+        required: false
+        type: string
+      - name: hipchat
+        in: formData
+        description: Updated last hipchat id of the competitor
+        required: false
+        type: string
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    delete:
+      tags:
+      - competitor
+      summary: Deletes a competitor
+      operationId: deleteCcompetitor
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: api_key
+        in: header
+        required: false
+        type: string
+      - name: competitorId
+        in: path
+        description: Ccompetitor id to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Competitor not found
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /game:
+    get:
+      tags:
+      - game
+      summary: Find games
+      operationId: getGames
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: name
+        in: query
+        description: Name of the game to search for
+        required: false
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Game'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Competitor not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    post:
+      tags:
+      - game
+      summary: Add a new game
+      operationId: addGame
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Game object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Game'
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    put:
+      tags:
+      - game
+      summary: Update an existing game
+      operationId: updateGame
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Game object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Game'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Game not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /game/{gameId}:
+    get:
+      tags:
+      - game
+      summary: Find game by ID
+      description: Returns a single game
+      operationId: getGameById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: gameId
+        in: path
+        description: ID of game to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Game'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Game not found
+      security:
+      - api_key: []
+    post:
+      tags:
+      - game
+      summary: Updates a game in the store with form data
+      operationId: updateGameWithForm
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: gameId
+        in: path
+        description: ID of competitor that needs to be updated
+        required: true
+        type: integer
+        format: int64
+      - name: name
+        in: formData
+        description: Game name
+        required: true
+        type: string
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    delete:
+      tags:
+      - game
+      summary: Deletes a game
+      operationId: deleteGame
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: api_key
+        in: header
+        required: false
+        type: string
+      - name: gameId
+        in: path
+        description: Game id to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Game not found
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /match:
+    get:
+      tags:
+      - match
+      summary: Find matches
+      operationId: getMatches
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: competitorId
+        in: query
+        description: Competitor to find matches for
+        required: false
+        type: integer
+      - name: gameId
+        in: query
+        description: Game to find matches for
+        required: false
+        type: integer
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Match'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Matches not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    post:
+      tags:
+      - match
+      summary: Add a new match
+      operationId: addMatch
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Match that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Match'
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    put:
+      tags:
+      - match
+      summary: Update an existing match
+      operationId: updateMatch
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Match object that needs to be added to the store
+        required: true
+        schema:
+          $ref: '#/definitions/Match'
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Match not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /match/{matchId}:
+    get:
+      tags:
+      - match
+      summary: Find match by ID
+      description: Returns a single match
+      operationId: getMatchById
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: matchId
+        in: path
+        description: ID of match to return
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Match'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Match not found
+      security:
+      - api_key: []
+    post:
+      tags:
+      - match
+      summary: Updates a match in the store with form data
+      operationId: updateMatchWithForm
+      consumes:
+      - application/x-www-form-urlencoded
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: matchId
+        in: path
+        description: ID of match that needs to be updated
+        required: true
+        type: integer
+        format: int64
+      - name: gameId
+        in: formData
+        description: Game ID
+        required: true
+        type: integer
+        format: int64
+      - name: competitor1Id
+        in: formData
+        description: Competitor 1 ID
+        required: true
+        type: integer
+        format: int64
+      - name: competitor1Score
+        in: formData
+        description: Competitor 1 Score
+        required: true
+        type: integer
+        format: int64
+      - name: competitor2Id
+        in: formData
+        description: Competitor 2 ID
+        required: true
+        type: integer
+        format: int64
+      - name: competitor2Score
+        in: formData
+        description: Competitor 2 Score
+        required: true
+        type: integer
+        format: int64
+      - name: timestamp
+        in: formData
+        description: Date/time of match
+        required: true
+        type: string
+        format: date-time
+      responses:
+        405:
+          description: Invalid input
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+    delete:
+      tags:
+      - match
+      summary: Deletes a match
+      operationId: deleteMatch
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: api_key
+        in: header
+        required: false
+        type: string
+      - name: matchId
+        in: path
+        description: Match id to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Match not found
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /ratings:
+    get:
+      tags:
+      - ratings
+      summary: Get ratings for a given user, game, or combination and rating type
+      operationId: getRatings
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: type
+        in: query
+        description: Rating type to use
+        required: false
+        type: string
+      - name: competitorId
+        in: query
+        description: Competitor to find matches for
+        required: false
+        type: integer
+      - name: gameId
+        in: query
+        description: Game to find matches for
+        required: false
+        type: integer
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rating'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Ratings not found
+        405:
+          description: Validation exception
+      security:
+      - arena_auth:
+        - write:arena
+        - read:arena
+  /user:
+    post:
+      tags:
+      - user
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: createUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Created user object
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        default:
+          description: successful operation
+  /user/createWithArray:
+    post:
+      tags:
+      - user
+      summary: Creates list of users with given input array
+      operationId: createUsersWithArrayInput
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: List of user object
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/User'
+      responses:
+        default:
+          description: successful operation
+  /user/createWithList:
+    post:
+      tags:
+      - user
+      summary: Creates list of users with given input array
+      operationId: createUsersWithListInput
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: List of user object
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/User'
+      responses:
+        default:
+          description: successful operation
+  /user/login:
+    get:
+      tags:
+      - user
+      summary: Logs user into the system
+      operationId: loginUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: username
+        in: query
+        description: The user name for login
+        required: true
+        type: string
+      - name: password
+        in: query
+        description: The password for login in clear text
+        required: true
+        type: string
+      responses:
+        200:
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              type: integer
+              format: int32
+              description: calls per hour allowed by the user
+            X-Expires-After:
+              type: string
+              format: date-time
+              description: date in UTC when token expires
+          schema:
+            type: string
+        400:
+          description: Invalid username/password supplied
+  /user/logout:
+    get:
+      tags:
+      - user
+      summary: Logs out current logged in user session
+      operationId: logoutUser
+      produces:
+      - application/json
+      - application/xml
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+  /user/{username}:
+    get:
+      tags:
+      - user
+      summary: Get user by user name
+      operationId: getUserByName
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: username
+        in: path
+        description: The name that needs to be fetched. Use user1 for testing.
+        required: true
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: Invalid username supplied
+        404:
+          description: User not found
+    put:
+      tags:
+      - user
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: username
+        in: path
+        description: name that need to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated user object
+        required: true
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        400:
+          description: Invalid user supplied
+        404:
+          description: User not found
+    delete:
+      tags:
+      - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: username
+        in: path
+        description: The name that needs to be deleted
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid username supplied
+        404:
+          description: User not found
+securityDefinitions:
+  arena_auth:
+    type: oauth2
+    authorizationUrl: http://arena.sparefoot.com/oauth/dialog
+    flow: implicit
+    scopes:
+      write:arena: modify pets in your account
+      read:arena: read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  Competitor:
+    type: object
+    required:
+    - type
+    properties:
+      id:
+        type: integer
+        format: int64
+      type:
+        type: string
+        enum:
+        - player
+        - team
+      firstName:
+        type: string
+        example: Selma
+      lastName:
+        type: string
+        example: Junkov
+      email:
+        type: string
+        example: Selma.Junkov@sparefoot.com
+      hipchat:
+        type: string
+        example: '@ebayexpert'
+    xml:
+      name: Competitor
+    example:
+      firstName: Selma
+      lastName: Junkov
+      hipchat: '@ebayexpert'
+      id: 0
+      type: player
+      email: Selma.Junkov@sparefoot.com
+  Game:
+    type: object
+    required:
+    - name
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        example: Ping pong
+    xml:
+      name: Game
+    example:
+      name: Ping pong
+      id: 0
+  Match:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      game:
+        $ref: '#/definitions/Game'
+      competitor1:
+        $ref: '#/definitions/Competitor'
+      competitor1Score:
+        type: integer
+        format: int64
+      competitor2:
+        $ref: '#/definitions/Competitor'
+      competitor2Score:
+        type: integer
+        format: int64
+      timestamp:
+        type: string
+        format: date-time
+    xml:
+      name: Match
+    example:
+      competitor1:
+        firstName: Selma
+        lastName: Junkov
+        hipchat: '@ebayexpert'
+        id: 0
+        type: player
+        email: Selma.Junkov@sparefoot.com
+      competitor1Score: 6
+      game:
+        name: Ping pong
+        id: 0
+      competitor2:
+        firstName: Selma
+        lastName: Junkov
+        hipchat: '@ebayexpert'
+        id: 0
+        type: player
+        email: Selma.Junkov@sparefoot.com
+      id: 0
+      competitor2Score: 1
+      timestamp: 2000-01-23T04:56:07.000+00:00
+  Rating:
+    type: object
+    required:
+    - type
+    properties:
+      competitor:
+        $ref: '#/definitions/Competitor'
+      game:
+        $ref: '#/definitions/Game'
+      rating:
+        type: integer
+        format: int64
+      type:
+        type: string
+    xml:
+      name: Rating
+    example:
+      game:
+        name: Ping pong
+        id: 0
+      competitor:
+        firstName: Selma
+        lastName: Junkov
+        hipchat: '@ebayexpert'
+        id: 0
+        type: player
+        email: Selma.Junkov@sparefoot.com
+      rating: 0
+      type: type
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      username:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      userStatus:
+        type: integer
+        format: int32
+        description: User Status
+    xml:
+      name: User
+    example:
+      firstName: firstName
+      lastName: lastName
+      password: password
+      userStatus: 6
+      phone: phone
+      id: 0
+      email: email
+      username: username
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io

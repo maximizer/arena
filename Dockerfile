@@ -7,4 +7,6 @@ RUN apt-get update -q -y \
 
 COPY . /var/www/html/
 WORKDIR /var/www/html
+
+# Install Deps
 RUN php composer.phar install

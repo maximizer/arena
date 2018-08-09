@@ -1,0 +1,8 @@
+{
+    "name": "sparefoot/arena",
+    "type": "project",
+    "require": {
+        "laravel/lumen": "^5.6"
+    },
+    "license": "MIT"
+}

@@ -5,7 +5,8 @@ RUN apt-get update -q -y \
         ca-certificates \
 	git
 
-COPY . /var/www/html/
+COPY . /var/www/html
+
 WORKDIR /var/www/html
 
 # Install Deps

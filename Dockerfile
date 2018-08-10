@@ -24,3 +24,5 @@ RUN chmod 777 /var/www/html/storage -R
 
 # Install Deps
 RUN php composer.phar install
+
+RUN docker-php-ext-install pdo pdo_mysql

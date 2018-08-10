@@ -19,5 +19,8 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
+# Configure directory permissions for the web server
+RUN chmod 777 /var/www/html/storage -R
+
 # Install Deps
 RUN php composer.phar install

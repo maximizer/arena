@@ -51,10 +51,11 @@ class PlayerRegistry extends DAL
 
         $stmt = $pdo->prepare("UPDATE ratables SET first_name = :first_name, last_name = :last_name, 
           email_address = :email_address,
-          hipchat_id = :hipchat_id, home_base = :home_base WHERE ratable_id = :ratable_id");
+          hipchat_id = :hipchat_id, home_base = :home_base, hipchat_id = :hipchat_id WHERE ratable_id = :ratable_id");
         $stmt->execute([':first_name'    => $player->firstName,
                         ':last_name'     => $player->lastName,
                         ':email_address' => $player->emailAddress,
+                        ':hipchat_id'    => $player->hipChat,
                         ':home_base'     => $player->homeBase,
                         ':ratable_id'    => $player->id ] );
     }
@@ -80,9 +81,10 @@ class PlayerRegistry extends DAL
             VALUES (:first_name, :last_name, :email_address. :hipchat_id, :home_base, 'PLAYER')");
 
         $stmt->execute([':first_name'    => $player->firstName,
-            ':last_name'     => $player->lastName,
-            ':email_address' => $player->emailAddress,
-            ':home_base'     => $player->homeBase]);
+            ':last_name'                 => $player->lastName,
+            ':email_address'             => $player->emailAddress,
+            ':hipchat_id'                => $player->hipChat,
+            ':home_base'                 => $player->homeBase]);
     }
 
     /**
@@ -95,6 +97,7 @@ class PlayerRegistry extends DAL
         $player->lastName = $row->last_name;
         $player->emailAddress = $row->email_address;
         $player->homeBase = $row->home_base;
+        $player->hipChat = $row->hipchat_id;
         $player->id = $row->ratable_id;
 
         return $player;

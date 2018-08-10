@@ -23,5 +23,7 @@ $router->get('/ratings', 'RatingsController@getNewRatings');
 
 $router->get('/games', 'GamesController@getGames');
 
+$router->get('/players', 'PlayersController@getPlayers');
+
 $router->get('/getMatches', 'MatchesController@getMatches');
 $router->post('/match', 'MatchesController@postMatch');

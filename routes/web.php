@@ -18,3 +18,5 @@ $router->get('/', function () use ($router) {
 $router->get('/foo', function () use ($router) {
     return 'foo';
 });
+
+$router->get('/ratings', 'RatingsController@getNewRatings');

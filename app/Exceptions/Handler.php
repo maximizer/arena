@@ -33,7 +33,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        parent::report($exception);
+        //parent::report($exception);
+		$fresource = fopen('php://stderr', 'w');
+		fwrite($fresource, $exception->getTraceAsString());
+		fclose($fresource);
     }
 
     /**

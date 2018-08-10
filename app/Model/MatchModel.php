@@ -11,13 +11,12 @@ namespace App\Model;
 
 class MatchModel
 {
-    public $id;
+    public $match_id;
     public $game_id;
-	public $competitor_id_1;
-	public $competitor_id_2;
+	public $ratable_1;
+	public $ratable_2;
 	public $score_1;
 	public $score_2;
-	public $type;
 	public $timestamp;
 
 }

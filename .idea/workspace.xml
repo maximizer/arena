@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a87896c6-dc64-45a1-8a53-c7d7e6871ee6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/DAL/PlayerRegistry.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/PlayerModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DAL/GamesRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DAL/GamesRegistry.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +33,7 @@
           <entry key="VERSION" value="1" />
           <entry key="json" value="1" />
           <entry key="md" value="2" />
-          <entry key="php" value="29" />
+          <entry key="php" value="31" />
           <entry key="sql" value="1" />
           <entry key="yaml" value="1" />
           <entry key="yml" value="2" />
@@ -42,7 +43,7 @@
         <counts>
           <entry key="JSON" value="1" />
           <entry key="Markdown" value="2" />
-          <entry key="PHP" value="29" />
+          <entry key="PHP" value="31" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SQL" value="1" />
           <entry key="YAML" value="3" />
@@ -51,46 +52,30 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Dockerfile" value="2" />
+          <entry key="dummy" value="13" />
           <entry key="md" value="121" />
-          <entry key="php" value="2020" />
+          <entry key="php" value="3046" />
           <entry key="yml" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="121" />
-          <entry key="PHP" value="2020" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PHP" value="3030" />
+          <entry key="PLAIN_TEXT" value="15" />
+          <entry key="SQL" value="16" />
           <entry key="YAML" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
         <counts>
-          <entry key="PHP Class.type" value="4" />
+          <entry key="PHP Class.type" value="5" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/etc/arena.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="35" selection-end-line="139" />
+            <state relative-caret-position="330">
+              <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -148,11 +133,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/DAL/GamesRegistry.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="71" column="47" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+            <state relative-caret-position="660">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/DAL/PlayerRegistry.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="843">
+              <caret line="83" column="51" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
+              <folding>
+                <element signature="e#116#140#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Model/PlayerModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -194,6 +200,10 @@
         <option value="$PROJECT_DIR$/bootstrap/app.php" />
         <option value="$PROJECT_DIR$/app/DAL/DAL.php" />
         <option value="$PROJECT_DIR$/app/DAL/GamesRegistry.php" />
+        <option value="$PROJECT_DIR$/app/Model/TeamModel.php" />
+        <option value="$PROJECT_DIR$/app/Model/PlayerModel.php" />
+        <option value="$PROJECT_DIR$/app/DAL/TeamRegistry.php" />
+        <option value="$PROJECT_DIR$/app/DAL/PlayerRegistry.php" />
       </list>
     </option>
   </component>
@@ -341,6 +351,12 @@
               <item name="arena" type="b2602c69:ProjectViewProjectNode" />
               <item name="arena" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="arena" type="b2602c69:ProjectViewProjectNode" />
+              <item name="arena" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -374,15 +390,16 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533925567684" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533926511544" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/DAL" />
+      <recent name="$PROJECT_DIR$/app/Http" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/Http" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Http/Controllers" />
     </key>
   </component>
@@ -411,12 +428,12 @@
       <workItem from="1533844840788" duration="92000" />
       <workItem from="1533864491765" duration="2842000" />
       <workItem from="1533916616977" duration="4321000" />
-      <workItem from="1533924828790" duration="737000" />
+      <workItem from="1533924828790" duration="1682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7992000" />
+    <option name="totallyTimeSpent" value="8937000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -579,13 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/etc/arena.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="35" selection-end-line="139" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -629,8 +639,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/DAL/GamesRegistry.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="71" column="47" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+        <state relative-caret-position="660">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/arena.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/PlayerModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DAL/PlayerRegistry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="83" column="51" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="51" />
+          <folding>
+            <element signature="e#116#140#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

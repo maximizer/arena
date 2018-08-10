@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\GamesService;
+use \PDO as PDO;
 
 class GamesController extends Controller
 {

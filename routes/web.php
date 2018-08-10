@@ -22,3 +22,4 @@ $router->get('/foo', function () use ($router) {
 $router->get('/ratings', 'RatingsController@getNewRatings');
 
 $router->get('/games', 'GamesController@getGames');
+$router->get('/players', 'PlayersController@getPlayers');

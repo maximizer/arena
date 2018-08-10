@@ -22,4 +22,9 @@ $router->get('/foo', function () use ($router) {
 $router->get('/ratings', 'RatingsController@getNewRatings');
 
 $router->get('/games', 'GamesController@getGames');
+<<<<<<< HEAD
 $router->get('/players', 'PlayersController@getPlayers');
+=======
+
+$router->post('/match', 'MatchesController@postMatch');
+>>>>>>> d230fd4cc3a88fcc4b0bf4d7fb2ce26498d08a06

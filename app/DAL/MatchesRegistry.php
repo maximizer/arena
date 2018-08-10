@@ -11,7 +11,7 @@ namespace App\DAL;
 use App\Model\MatchModel;
 use Illuminate\Http\Request;
 
-class MatchesRegistry
+class MatchesRegistry extends DAL
 {
 	public function selectAllMatches() {
 
@@ -31,9 +31,9 @@ class MatchesRegistry
 	public function insertMatch(Request $request) {
 
 		$pdo = $this->getPdo();
-		$insertMatchObject = $this->_mapRequestToModel($request);
+		$insertMatchObject = (array) $this->_mapRequestToModel($request);
 
-		$sql = "INSERT INTO matches (" . array_keys($insertMatchObject) . ") VALUES(" . array_values($insertMatchObject) . ");";
+		$sql = "INSERT INTO matches (" . implode(',', array_keys($insertMatchObject)) . ") VALUES('" . implode('\',\'', array_values($insertMatchObject)) . "');";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute();
 	}
@@ -45,10 +45,10 @@ class MatchesRegistry
 	private function _mapRowToModel($row) {
 		$match = new MatchModel();
 
-		$match->id = $row->match_id;
+		$match->match_id = $row->match_id;
 		$match->game_id = $row->game_id;
-		$match->competitor_id_1 = $row->ratable_1;
-		$match->competitor_id_2 = $row->ratable_2;
+		$match->ratable_1 = $row->ratable_1;
+		$match->ratable_2 = $row->ratable_2;
 		$match->score_1 = $row->score_1;
 		$match->score_2 = $row->score_2;
 		$match->timestamp = $row->timestamp;
@@ -63,10 +63,10 @@ class MatchesRegistry
 	private function _mapRequestToModel(Request $request) {
 		$match = new MatchModel();
 
-		$match->id = $request->input('match_id');
+		$match->match_id = $request->input('match_id');
 		$match->game_id = $request->input('game_id');
-		$match->competitor_id_1 = $request->input('ratable_1');
-		$match->competitor_id_2 = $request->input('ratable_2');
+		$match->ratable_1 = $request->input('ratable_1');
+		$match->ratable_2 = $request->input('ratable_2');
 		$match->score_1 = $request->input('score_1');
 		$match->score_2 = $request->input('score_2');
 		$match->timestamp = $request->input('timestamp');

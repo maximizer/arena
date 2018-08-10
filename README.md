@@ -1,6 +1,12 @@
 # arena
 
-*Run via Docker Compose*
+*To run Arena*
+
+First install composer packages:
+
+`% php composer.phar install`
+
+Then run via docker-compose
 
 `% docker-compose up`
 

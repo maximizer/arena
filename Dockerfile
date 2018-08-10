@@ -6,6 +6,16 @@ RUN apt-get update -q -y \
 	git
 
 COPY . /var/www/html
+COPY ./etc/apache2.conf /etc/apache2/apache2.conf
+
+#  Configuring Apache
+RUN  rm /etc/apache2/sites-available/000-default.conf
+
+# Enable rewrite module
+RUN a2enmod rewrite
+
+# Enable rewrite module
+RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
